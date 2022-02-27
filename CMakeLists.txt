@@ -4,6 +4,3 @@ project(cpp-exercises VERSION 1.0.0)
 include_directories(src)
 add_subdirectory(src)
 add_subdirectory(test)
-
-add_executable(application main.cpp)
-target_link_libraries(application exercises)
