@@ -1,10 +1,7 @@
-#include <iostream>
-#include <string>
-
-#include "fizz_buzz.h"
-#include "reverse_string.h"
+#include "fizz_buzz.hpp"
+#include "reverse_string.hpp"
 
 int main()
 {
-    reverse_string("hello");
+    std::cout << reverse_string("hello") << std::endl;
 }
