@@ -3,6 +3,6 @@ project(cpp-exercises VERSION 1.0.0)
 
 enable_testing()
 
-include_directories(src)
+include_directories(include)
 add_subdirectory(src)
 add_subdirectory(test)
