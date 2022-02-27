@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(cpp-exercises VERSION 1.0.0)
 
-include(CPack)
 include(GoogleTest)
-
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -12,9 +10,6 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 
 add_executable(application main.cpp)
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 
 enable_testing()
 
