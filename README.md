@@ -14,7 +14,7 @@ Developed and tested on the following setup:
 
 ## Build
 
-Run following commands on your terminal to compile the project:
+Run following commands in your terminal to compile the project:
 
 ```bash
 mkdir build
@@ -25,10 +25,9 @@ make
 
 ## Run
 
-The built binaries are stored in `/build`:
+The unit test binary is stored in `/build`:
 
 ```bash
-./cpp-exercises
 ./cpp-exercises-test
 ```
 
