@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(cpp-exercises VERSION 1.0.0)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR})
 
 enable_testing()

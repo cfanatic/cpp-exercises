@@ -9,7 +9,7 @@
 
 void fizz_buzz(int num)
 {
-    for (int i=1; i<=num; i++)
+    for (int i = 1; i <= num; i++)
     {
         if (i % 3 == 0)
             std::cout << "Fizz" << std::endl;
