@@ -1,3 +1,7 @@
+// ==========================================================================================
+// Write a function that reverses a string without using any library functions.
+// ==========================================================================================
+
 std::string reverse_string(std::string str)
 {
     std::string str_rev;
