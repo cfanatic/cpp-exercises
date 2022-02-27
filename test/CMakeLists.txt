@@ -8,8 +8,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-enable_testing()
-
 file(GLOB_RECURSE TEST_SOURCES
     "*.cpp"
 )
