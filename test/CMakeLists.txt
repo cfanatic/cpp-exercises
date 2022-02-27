@@ -8,11 +8,11 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-file(GLOB_RECURSE TEST_SOURCES
+file(GLOB_RECURSE SOURCES_TEST
     "*.cpp"
 )
 
-add_executable(${BINARY} ${TEST_SOURCES})
+add_executable(${BINARY} ${SOURCES_TEST})
 target_link_libraries(${BINARY} exercises gtest_main)
 
 gtest_discover_tests(${BINARY})

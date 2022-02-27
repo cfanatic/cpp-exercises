@@ -5,6 +5,8 @@
 // And if a number is divisible by both 3 and 5, print "FizzBuzz" instead of the number.
 // ==========================================================================================
 
+#include "fizz_buzz.hpp"
+
 void fizz_buzz(int num)
 {
     for (int i=1; i<=num; i++)

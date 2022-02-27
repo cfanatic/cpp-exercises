@@ -1,4 +1,8 @@
+file(GLOB_RECURSE SOURCES
+    "*.cpp"
+)
+
 add_library(
     exercises
-    reverse_string.cpp
+    ${SOURCES}
 )
