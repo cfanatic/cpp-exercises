@@ -19,8 +19,5 @@ bool nested_parantheses(std::string str)
         if (res < 0)
             return false;
     }
-    if (!res)
-        return true;
-    else
-        return false;
+    return res == 0;
 }
