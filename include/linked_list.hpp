@@ -15,6 +15,7 @@ public:
 
     std::shared_ptr<ListElement<T>> get_next() const { return next; }
     const T &get_value() const { return data; }
+
     void set_next(std::shared_ptr<ListElement<T>> element) { next = element; }
     void set_value(const T &value) { data = value; }
 
@@ -46,7 +47,7 @@ std::shared_ptr<ListElement<T>> ListElement<T>::insert_front(const T &data)
     std::shared_ptr<ListElement<T>> new_element = std::make_shared<ListElement<T>>(data);
 
     if (new_element != nullptr)
-        new_element->set_next(this->get_next());
+        new_element->set_next(std::make_shared<ListElement<T> >(*this));
 
     return new_element;
 }
