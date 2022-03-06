@@ -1,0 +1,30 @@
+Linked Lists
+------------
+
+- Three kinds of linked lists exist: 1) Singly linked lists, 2) doubly linked lists, and 3) circular
+  linked lists.
+
+- In a singly linked list, each data element has a link (a pointer or reference) to the element
+  that follows it in the list. The first element in a singly linked list is referred to as the head
+  of the list. The last element in such a list is called the tail of the list and has an empty or
+  null link.
+  Because the links in a singly linked list consist only of next pointers or references, the list
+  can be traversed only in the forward direction. Therefore, a complete traversal of the list must
+  begin with the first element. In other words: You need a pointer or reference to the first
+  element of a list to locate all the elements in the list.
+
+- In a doubly linked list, each data element has a link to the previous element in the list, as
+  well as to the next element in the list. This additional link makes it possible to traverse the
+  list in either direction. The entire list can be traversed starting from any element.
+  A doubly linked listhas head and tail elements justlike a singly linked list. The head of the list has an empty or null previous link, and the tail of the list has an empty or null next link.
+
+- In a circular linked list, there is no head or tail. Each element in a circular linked list has
+  non-null next or previous pointers or references. A list with one element merely points to itself.
+  Circular linked lists come in singly and doubly linked varieties.
+  The primary traversal problem for circular lists is cycle avoidance. If you do not track where you
+  start, you will cycle inifinitely through the list.
+
+- The head element of a singly linked listmust always be tracked. Otherwise, the list will be lost.
+  This means that the pointer or reference to the head of the list must be updated when a new
+  element is inserted ahead of the first element, or when the existing first element is removed from
+  the list.
