@@ -1,0 +1,61 @@
+Big-O Analysis
+--------------
+
+- Runtime analysis which measures the efficiency of an algorithm in terms of the time it takes
+  to run as a function of the input size.
+
+- It provides a way to compare the predicted relative performance of different algorithms as
+  the input size becomes large.
+
+- An algorithm with constant running time always takes the same amount of time to execute,
+  regardless of the input size. This is an O(1) algorithm. The performance of most algorithms depends on n, the size of the input. Algorithms that run in constant, logarithmic, linear or quasilinear time are preferred.
+
+- The input size is assumed to be an unknown value 'n'. In the examples below, n represents the
+  the number of elements in an array. After determining what n means in therms of the input,
+  you must determine how many operations are performed for each of the n input items.
+
+- In compare_to_max(), each array element is compared once to a maximum value. Thus, the n input
+  items are each examined once, resulting in n examinations. This is considered O(n), usually
+  referred to as linear time.
+  It may seem more accurate to to call it an O(n+2) function to reflect the initialization of
+  'max' and the check of whether 'n' is greater than 0. But as n approaches inifinity, the
+  difference between n and n+2 is insignificant, so the constant term can be ignored.
+
+- In compare_to_all(), you need to make an assumption about where the largest number occurs in
+  the array. We assume that the maximum element is at the end of the array. This is a worst-case
+  scenario, because the maximum value is at the end of the array.
+  In this case, the function comparees each of n elements to n other elements. Thus, you have
+  n*n examinations, so this is an O(n^2) algorithm.
+
+- You may think the comparison was stacked against compare_to_all(), because the maximum value
+  was at the end. This is true, and it raises the important issues of best-case, average-case
+  and worst-case.
+
+- Consider the average-case, in which the largest value is in the middle. This results in checking
+  n*(n/2) = n^2/2 times. Big-O analysis is concerned with the way the running time changes as the
+  input becomes very large. As n increases towards infinitiy, the difference between n^2/2 and n^2
+  becomes negligible. With this in mind, the average-case for compare_to_all() is no better than
+  the worst-case. It is still O(n^2).
+
+- The best-case running time for compare_to_all() is better than O(n^2). In this case, the maximum
+  value is at the beginning of the array. The maximum value is compared to all other values only
+  once, so the result is an O(n) running time.
+
+- In compare_to_max(), th best-case, average-case and worst-case running times are identical.
+  Regardless of the arrangement of the values in the array, the algorithm is always O(n).
+
+- Thus in Big-O analysis, you eliminate all but the highest-order term. The term that is largest
+  as 'n' gets very large. And you drop all constant factors.
+
+- Algorithm optimizations do not always yield in the expected changes in their overall running
+  times. In compare_to_all(), you may decide to compare each number only with the numbers that follow it in the array. The algorithm is still correct if you compare only to numbers ocurring after the current number.
+  What is the worst-case running time for this implementation? The first number is compared to n numbers, the second nubmer to n-1 numbers, the third number to n-2 numbers, etc. This results in comparisons equal to: n + (n-1) + (n-2) + (n-3) + ... + 1. This is a common result, a series with a sum of: n^2/2 + n/2.
+  Because n^2 is the highest-order term, this version of the algorithm still has O(n^2) running time in the worst-case. Although this optimization reduces the running time, it has no effect on the rate at which the running time increases as n increases.
+
+How to do Big-O Analysis
+------------------------
+
+1. Figure out what the input is and what 'n' represents.
+2. Express the number of operations the algorithm performs in terms of 'n'.
+3. Eliminate all but the highest-order terms.
+4. Remove all constant factors.
