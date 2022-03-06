@@ -8,7 +8,9 @@ Big-O Analysis
   the input size becomes large.
 
 - An algorithm with constant running time always takes the same amount of time to execute,
-  regardless of the input size. This is an O(1) algorithm. The performance of most algorithms depends on n, the size of the input. Algorithms that run in constant, logarithmic, linear or quasilinear time are preferred.
+  regardless of the input size. This is an O(1) algorithm. The performance of most algorithms
+  depends on n, the size of the input. Algorithms that run in constant, logarithmic, linear or
+  quasilinear time are preferred.
 
 - The input size is assumed to be an unknown value 'n'. In the examples below, n represents the
   the number of elements in an array. After determining what n means in therms of the input,
@@ -48,9 +50,16 @@ Big-O Analysis
   as 'n' gets very large. And you drop all constant factors.
 
 - Algorithm optimizations do not always yield in the expected changes in their overall running
-  times. In compare_to_all(), you may decide to compare each number only with the numbers that follow it in the array. The algorithm is still correct if you compare only to numbers ocurring after the current number.
-  What is the worst-case running time for this implementation? The first number is compared to n numbers, the second nubmer to n-1 numbers, the third number to n-2 numbers, etc. This results in comparisons equal to: n + (n-1) + (n-2) + (n-3) + ... + 1. This is a common result, a series with a sum of: n^2/2 + n/2.
-  Because n^2 is the highest-order term, this version of the algorithm still has O(n^2) running time in the worst-case. Although this optimization reduces the running time, it has no effect on the rate at which the running time increases as n increases.
+  times. In compare_to_all(), you may decide to compare each number only with the numbers that
+  follow it in the array. The algorithm is still correct if you compare only to numbers ocurring
+  after the current number.
+  What is the worst-case running time for this implementation? The first number is compared to n
+  numbers, the second nubmer to n-1 numbers, the third number to n-2 numbers, etc. This results in
+  comparisons equal to: n + (n-1) + (n-2) + (n-3) + ... + 1. This is a common result, a series with
+  a sum of: n^2/2 + n/2.
+  Because n^2 is the highest-order term, this version of the algorithm still has O(n^2) running
+  time in the worst-case. Although this optimization reduces the running time, it has no effect on
+  the rate at which the running time increases as n increases.
 
 How to do Big-O Analysis
 ------------------------
