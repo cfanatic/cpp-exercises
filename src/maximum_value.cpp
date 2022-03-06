@@ -4,6 +4,18 @@
 
 #include "maximum_value.hpp"
 
+/*
+
+Big-O Analysis
+--------------
+
+1. Figure out what the input is and what 'n' represents.
+2. Express the number of operations the algorithm performs in terms of 'n'.
+3. Eliminate all but the highest-order terms.
+4. Remove all constant factors.
+
+*/
+
 int compare_to_max(std::vector<int> input, int n)
 {
     int max = 0;
