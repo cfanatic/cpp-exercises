@@ -79,3 +79,16 @@ TEST(LinkedListTest, Remove)
     test(400);
     test(100);
 }
+
+TEST(LinkedListTest, RemoveAll)
+{
+    std::shared_ptr<ListElement<int>> head = std::make_shared<ListElement<int>>();
+
+    head = head->insert_front(100);
+    head = head->insert_front(200);
+    head = head->insert_front(300);
+    head = head->insert_front(400);
+
+    head->remove_all(&head);
+    EXPECT_TRUE(head == nullptr);
+}

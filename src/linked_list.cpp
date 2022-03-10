@@ -66,6 +66,21 @@ bool ListElement<T>::remove(std::shared_ptr<ListElement<T>> *head, std::shared_p
     return false;
 }
 
+template <class T>
+void ListElement<T>::remove_all(std::shared_ptr<ListElement<T>> *head)
+{
+    std::shared_ptr<ListElement<T>> to_delete = nullptr, to_save = *head;
+
+    while (to_save->get_next() != nullptr)
+    {
+        to_delete = to_save;
+        to_save = to_save->get_next();
+        to_delete.reset();
+    }
+
+    *head = nullptr;
+}
+
 // Avoid unresolved symbol error during linking
 // --------------------------------------------
 // Move the implementation above into 'linked_list.hpp'
@@ -75,3 +90,4 @@ template bool ListElement<int>::insert_front(std::shared_ptr<ListElement<int>> *
 template std::shared_ptr<ListElement<int>> ListElement<int>::insert_front(const int &data);
 template std::shared_ptr<ListElement<int>> ListElement<int>::find(std::shared_ptr<ListElement<int>> head, const int &data);
 template bool ListElement<int>::remove(std::shared_ptr<ListElement<int>> *head, std::shared_ptr<ListElement<int>> element);
+template void ListElement<int>::remove_all(std::shared_ptr<ListElement<int>> *head);
