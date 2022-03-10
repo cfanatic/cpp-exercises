@@ -33,10 +33,12 @@ template <class T>
 std::shared_ptr<ListElement<T>> ListElement<T>::find(std::shared_ptr<ListElement<T>> head, const T &data)
 {
     std::shared_ptr<ListElement<T>> element = head;
+
     while ((element->get_next() != nullptr) && (element->get_value() != data))
     {
         element = element->get_next();
     }
+
     return element;
 }
 
