@@ -28,3 +28,5 @@ Linked Lists
   This means that the pointer or reference to the head of the list must be updated when a new
   element is inserted ahead of the first element, or when the existing first element is removed from
   the list.
+
+- You often need to work with list elements other than the head element. Operations on any but the first element of a linked list require traversal of some elements in the list. When traversing, you must always check that you have not reached the end of the list.
