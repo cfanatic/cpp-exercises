@@ -24,6 +24,7 @@ public:
     std::shared_ptr<ListElement<T>> insert_front(const T &data);
 
     std::shared_ptr<ListElement<T>> find(std::shared_ptr<ListElement<T>> head, const T &data);
+    bool remove(std::shared_ptr<ListElement<T>> *head, std::shared_ptr<ListElement<T>> element);
 
 private:
     std::shared_ptr<ListElement<T>> next;

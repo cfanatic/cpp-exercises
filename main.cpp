@@ -9,6 +9,16 @@ int main()
         std::cout << "head.data: " << head->get_value() << std::endl;
     };
 
+    auto print_all = [&]()
+    {
+        std::shared_ptr<ListElement<int>> temp = head;
+        while (temp->get_next() != nullptr)
+        {
+            std::cout << "element.data: " << temp->get_value() << std::endl;
+            temp = temp->get_next();
+        }
+    };
+
     std::cout << "Head of Linked List:" << std::endl;
     print();
 
@@ -17,9 +27,21 @@ int main()
     print();
     head = head->insert_front(200);
     print();
+    head = head->insert_front(300);
+    print();
+    head = head->insert_front(400);
+    print();
 
     std::cout << "Head of Linked List:" << std::endl;
     print();
+
+    std::cout << "Content of old Linked List:" << std::endl;
+    print_all();
+    std::shared_ptr<ListElement<int>> to_delete;
+    to_delete = head->find(head, 200);
+    head->remove(&head, to_delete);
+    std::cout << "Content of new Linked List:" << std::endl;
+    print_all();
 
     std::cout << "Printing two elements after head:" << std::endl;
     head = head->get_next();

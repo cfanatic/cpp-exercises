@@ -48,3 +48,44 @@ TEST(LinkedListTest, Find)
     element = element->find(head, -1);
     EXPECT_EQ(element->get_value(), 0);
 }
+
+TEST(LinkedListTest, Remove)
+{
+    std::shared_ptr<ListElement<int>> head = std::make_shared<ListElement<int>>();
+
+    head = head->insert_front(100);
+    head = head->insert_front(200);
+    head = head->insert_front(300);
+    head = head->insert_front(400);
+
+    int data;
+    std::shared_ptr<ListElement<int>> to_delete = std::make_shared<ListElement<int>>();
+
+    data = 300;
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), data);
+    head->remove(&head, to_delete);
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), 0);
+
+    data = 200;
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), data);
+    head->remove(&head, to_delete);
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), 0);
+
+    data = 400;
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), data);
+    head->remove(&head, to_delete);
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), 0);
+
+    data = 100;
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), data);
+    head->remove(&head, to_delete);
+    to_delete = head->find(head, data);
+    EXPECT_EQ(to_delete->get_value(), 0);
+}

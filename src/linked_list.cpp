@@ -40,6 +40,30 @@ std::shared_ptr<ListElement<T>> ListElement<T>::find(std::shared_ptr<ListElement
     return element;
 }
 
+template <class T>
+bool ListElement<T>::remove(std::shared_ptr<ListElement<T>> *head, std::shared_ptr<ListElement<T>> element)
+{
+    std::shared_ptr<ListElement<T>> temp = *head;
+
+    if (temp->get_value() == element->get_value())
+    {
+        *head = temp->get_next();
+        return true;
+    }
+
+    while (temp)
+    {
+        if (temp->get_next()->get_value() == element->get_value())
+        {
+            temp->set_next(element->get_next());
+            return true;
+        }
+        temp = temp->get_next();
+    }
+
+    return false;
+}
+
 // Avoid unresolved symbol error during linking
 // --------------------------------------------
 // Move the implementation above into 'linked_list.hpp'
@@ -48,3 +72,4 @@ std::shared_ptr<ListElement<T>> ListElement<T>::find(std::shared_ptr<ListElement
 template bool ListElement<int>::insert_front(std::shared_ptr<ListElement<int>> *head, const int &data);
 template std::shared_ptr<ListElement<int>> ListElement<int>::insert_front(const int &data);
 template std::shared_ptr<ListElement<int>> ListElement<int>::find(std::shared_ptr<ListElement<int>> head, const int &data);
+template bool ListElement<int>::remove(std::shared_ptr<ListElement<int>> *head, std::shared_ptr<ListElement<int>> element);
