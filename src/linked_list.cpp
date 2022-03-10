@@ -29,9 +29,22 @@ std::shared_ptr<ListElement<T>> ListElement<T>::insert_front(const T &data)
     return new_element;
 }
 
-// In order to avoid unresolved symbol error during linking:
-// Instantiate methods with argument 'int'
-// OR
-// Move the implementation above into 'linked_list.hpp' instead
+template <class T>
+std::shared_ptr<ListElement<T>> ListElement<T>::find(std::shared_ptr<ListElement<T>> head, const T &data)
+{
+    std::shared_ptr<ListElement<T>> element = head;
+    while ((element->get_next() != nullptr) && (element->get_value() != data))
+    {
+        element = element->get_next();
+    }
+    return element;
+}
+
+// Avoid unresolved symbol error during linking
+// --------------------------------------------
+// Move the implementation above into 'linked_list.hpp'
+//  OR
+// Instantiate methods with argument 'int' as below
 template bool ListElement<int>::insert_front(std::shared_ptr<ListElement<int>> *head, const int &data);
 template std::shared_ptr<ListElement<int>> ListElement<int>::insert_front(const int &data);
+template std::shared_ptr<ListElement<int>> ListElement<int>::find(std::shared_ptr<ListElement<int>> head, const int &data);

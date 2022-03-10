@@ -10,6 +10,7 @@ class ListElement
 {
 
 public:
+    ListElement() : next(nullptr), data(0) {}
     ListElement(const T &value) : next(nullptr), data(value) {}
     ~ListElement() {}
 
@@ -21,6 +22,8 @@ public:
 
     bool insert_front(std::shared_ptr<ListElement<T>> *head, const T &data);
     std::shared_ptr<ListElement<T>> insert_front(const T &data);
+
+    std::shared_ptr<ListElement<T>> find(std::shared_ptr<ListElement<T>> head, const T &data);
 
 private:
     std::shared_ptr<ListElement<T>> next;
