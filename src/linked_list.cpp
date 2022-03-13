@@ -114,11 +114,5 @@ void ListElement<T>::operator=(const int &value)
 // --------------------------------------------
 // Move the implementation above into 'linked_list.hpp'
 //  OR
-// Instantiate methods with argument 'int' as below
-template bool ListElement<int>::insert_front(std::shared_ptr<ListElement<int>> *head, const int &data);
-template std::shared_ptr<ListElement<int>> ListElement<int>::insert_front(const int &data);
-template std::shared_ptr<ListElement<int>> ListElement<int>::find(std::shared_ptr<ListElement<int>> head, const int &data);
-template bool ListElement<int>::remove(std::shared_ptr<ListElement<int>> *head, std::shared_ptr<ListElement<int>> element);
-template void ListElement<int>::remove_all(std::shared_ptr<ListElement<int>> *head);
-template std::shared_ptr<ListElement<int>> ListElement<int>::operator[](const int &index);
-template void ListElement<int>::operator=(const int &value);
+// Instantiate the class and all its member functions as below
+template class ListElement<int>;
