@@ -35,6 +35,15 @@ int main()
     std::cout << "Head of Linked List:" << std::endl;
     print();
 
+    std::cout << "head[0]: " << (*head)[0]->get_value() << std::endl;
+    std::cout << "head[1]: " << (*head)[1]->get_value() << std::endl;
+    std::cout << "head[2]: " << (*head)[2]->get_value() << std::endl;
+    std::cout << "head[3]: " << (*head)[3]->get_value() << std::endl;
+    std::cout << "head[4]: " << (*head)[4]->get_value() << std::endl;
+
+    std::cout << "Setting head[1]=500" << std::endl;
+    *((*head)[1]) = 500;
+
     std::cout << "Content of old Linked List:" << std::endl;
     print_all();
     std::shared_ptr<ListElement<int>> to_delete;

@@ -81,6 +81,35 @@ void ListElement<T>::remove_all(std::shared_ptr<ListElement<T>> *head)
     *head = nullptr;
 }
 
+template <class T>
+std::shared_ptr<ListElement<T>> ListElement<T>::operator[](const int &index)
+{
+    auto element = std::make_shared<ListElement<T>>(*this);
+    int cnt = 0;
+
+    while (cnt < index)
+    {
+        if (element->get_next() != nullptr)
+        {
+            element = element->get_next();
+            cnt++;
+        }
+        else
+        {
+            element = nullptr;
+            break;
+        }
+    }
+
+    return element;
+}
+
+template <class T>
+void ListElement<T>::operator=(const int &value)
+{
+    this->set_value(value);
+}
+
 // Avoid unresolved symbol error during linking
 // --------------------------------------------
 // Move the implementation above into 'linked_list.hpp'
@@ -91,3 +120,5 @@ template std::shared_ptr<ListElement<int>> ListElement<int>::insert_front(const 
 template std::shared_ptr<ListElement<int>> ListElement<int>::find(std::shared_ptr<ListElement<int>> head, const int &data);
 template bool ListElement<int>::remove(std::shared_ptr<ListElement<int>> *head, std::shared_ptr<ListElement<int>> element);
 template void ListElement<int>::remove_all(std::shared_ptr<ListElement<int>> *head);
+template std::shared_ptr<ListElement<int>> ListElement<int>::operator[](const int &index);
+template void ListElement<int>::operator=(const int &value);

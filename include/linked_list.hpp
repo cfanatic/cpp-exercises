@@ -25,6 +25,9 @@ public:
     bool remove(std::shared_ptr<ListElement<T>> *head, std::shared_ptr<ListElement<T>> element);
     void remove_all(std::shared_ptr<ListElement<T>> *head);
 
+    std::shared_ptr<ListElement<T>> operator[](const int &index);
+    void operator=(const int &value);
+
 private:
     std::shared_ptr<ListElement<T>> next;
     T data;
