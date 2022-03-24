@@ -1,0 +1,15 @@
+Stack
+-----
+
+- A stack is a last-in-first-out (LIFO) data structure. Elements are always removed in the reverse order in which they were added. The add-element and remove-element operations are called "push" and "pop".
+
+- Tracking return addresses, parameters and local variables for subroutines are examples of stack use.
+
+- A stack can be implemented by using a dynamic array or linked list.
+
+- A dynamic array can be used to implement a stack. It is an array which changes size as needed when elements are added. A dynamic array can be used to implement a stack.
+
+- Advantage: Arrays offer random access to the array elements. You can immediately access any element in the array if you know its index.
+
+- Disadvantage: Operations on a stack always work on one end of the data structure. The top of the stack, so dynamic arrays gain you little. Furthermore, as a dynamic array grows, it must be resized occasionally. This can be time consuming as elements are copied from the old array to the new array.
+
