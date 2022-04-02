@@ -9,12 +9,13 @@ Each file in `/src` corresponds to an exercise. A task description is given in e
 Developed and tested on the following setup:
 
 - Debian 11.2
+- Docker 20.10
 - macOS 12.2.1
 - cmake 3.21.4
 
 ## Build
 
-Run following commands in your terminal to compile the project:
+Run following commands on your host to compile the project:
 
 ```text
 mkdir build
@@ -23,9 +24,17 @@ cmake ..
 make
 ```
 
+Or build the project in a container:
+
+```text
+docker build -t cpp-exercises .
+docker run --rm cpp-exercises cpp-exercises-debug
+docker run --rm cpp-exercises cpp-exercises-test
+```
+
 ## Test
 
-The binary which runs the unit tests is stored in `/build`:
+The binary which runs the unit tests is stored in the `build` folder:
 
 ```text
 ./cpp-exercises-test
