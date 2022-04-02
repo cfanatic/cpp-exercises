@@ -8,9 +8,14 @@ pipeline {
     }
 
     stages {
+        stage('Build') {
+            steps {
+                sh 'cat test/linked_list_test.cpp'
+            }
+        }
         stage('Test') {
             steps {
-                sh 'cpp-exercises-test'
+                sh 'cpp-exercises-test --gtest_output=xml:results.xml'
             }
         }
         stage('Deploy') {
@@ -19,5 +24,12 @@ pipeline {
             }
         }
     }
-
+    post {
+        always {
+            xunit (
+                thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
+                tools: [ GoogleTest(pattern: 'results.xml') ]
+            )
+        }
+    }
 }
