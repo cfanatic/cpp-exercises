@@ -10,8 +10,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: 'feature/jenkins']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/cfanatic/cpp-exercises']]])
-                cmakeBuild buildType: 'Debug', buildDir: 'build', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
+                checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: 'feature/jenkins']],
+                    extensions: [],
+                    userRemoteConfigs: [[url: 'https://github.com/cfanatic/cpp-exercises']],
+                ])
+                cmakeBuild buildType: 'Debug',
+                    buildDir: 'build',
+                    cleanBuild: true,
+                    installation: 'InSearchPath',
+                    steps: [[withCmake: true]]
             }
         }
         stage('Test') {
