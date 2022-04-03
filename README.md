@@ -10,7 +10,7 @@ Developed and tested on the following setup:
 
 - Debian 11.2
 - Docker 20.10
-- macOS 12.2.1
+- Jenkins 2.341
 - cmake 3.21.4
 
 ## Build
@@ -117,3 +117,25 @@ exit
 ```
 
 Open `http://localhost:8000`, enter the authentication password and finish the setup.
+
+### Known Issues
+
+The Jenkins plugin [cppcheck 1.25](https://plugins.jenkins.io/cppcheck) is incompatible with JDK11.
+When you perform a pipeline run, you may encounter following error in the *Console Output*:
+
+> [Cppcheck] Parsing throws exceptions. javax.xml.bind.JAXBException:
+Implementation of JAXB-API has not been found on module path or classpath.
+
+You can resolve this issue by considering the [pull request #56](https://github.com/jenkinsci/cppcheck-plugin/pull/56).
+
+Follow these steps to build the plugin including patch yourself:
+
+```text
+git clone -b jdk11 https://github.com/xnYi9wRezm/cppcheck-plugin.git
+cd cppcheck-plugin
+mvn verify
+mvn hpi:hpi
+cp target/cppcheck.hpi /var/jenkins_home/plugins
+```
+
+Install the plugin by restarting the Jenkins server.
