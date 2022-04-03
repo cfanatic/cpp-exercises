@@ -1,29 +1,26 @@
 pipeline {
 
-    agent {
-        dockerfile {
-            filename 'Dockerfile'
-            args '-e PATH=/src/cpp-exercises/build:$PATH'
-        }
-    }
+    agent any
 
     stages {
         stage('Build') {
             steps {
-                sh 'cat test/linked_list_test.cpp'
+                checkout([$class: 'GitSCM', branches: [[name: 'feature/jenkins']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/cfanatic/cpp-exercises']]])
+                cmakeBuild buildType: 'Debug', buildDir: 'build', cleanBuild: true, installation: 'InSearchPath', steps: [[withCmake: true]]
             }
         }
         stage('Test') {
             steps {
-                sh 'cpp-exercises-test --gtest_output=xml:results.xml'
+                sh './build/cpp-exercises-test --gtest_output=xml:results.xml'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying...'
+                echo 'n/a'
             }
         }
     }
+
     post {
         always {
             xunit (
@@ -32,4 +29,5 @@ pipeline {
             )
         }
     }
+
 }

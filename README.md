@@ -104,11 +104,12 @@ echo "deb [arch=amd64 \
   bullseye stable" > /etc/apt/sources.list.d/docker.list
 apt-get update
 apt-get upgrade
-apt-get install -y docker-ce-cli nano sudo
+apt-get install -y docker-ce-cli nano cmake gcc g++
 jenkins-plugin-cli --plugins docker-plugin:1.2.6
 jenkins-plugin-cli --plugins docker-workflow:1.28
 jenkins-plugin-cli --plugins docker-commons:1.19
 jenkins-plugin-cli --plugins docker-java-api:3.1.5.2
+jenkins-plugin-cli --plugins cmakebuilder:4.1.1
 jenkins-plugin-cli --plugins xunit:3.0.6
 echo "alias c='clear'" > /var/jenkins_home/.bashrc && source /var/jenkins_home/.bashrc
 exit
