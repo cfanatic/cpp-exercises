@@ -28,19 +28,22 @@ Or build the project in a container:
 
 ```text
 docker build -t cpp-exercises .
-docker run --rm cpp-exercises cpp-exercises-debug
-docker run --rm cpp-exercises cpp-exercises-test
 ```
 
 ## Test
 
-The binary which runs the unit tests is stored in the `build` folder:
+Run the unit tests from your build environment:
 
 ```text
-./cpp-exercises-test
+cd build
+ctest
 ```
 
-Or simply call `ctest` to execute the unit tests conveniently.
+Or run the container:
+
+```text
+docker run --rm cpp-exercises cpp-exercises-test
+```
 
 ## Continuous Testing
 
