@@ -30,7 +30,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh './build/cpp-exercises-test --gtest_output=xml:gtest-results.xml'
-                sh 'cppcheck . --enable=all --language=c++ --std=c++14 -I include/ -ibuild/ --suppress=\'*:build/*\' --xml 2> cppcheck-result.xml'
+                sh 'cppcheck . --enable=all --language=c++ --std=c++14 -ibuild/ --xml 2> cppcheck-result.xml'
             }
         }
         stage('Deploy') {
