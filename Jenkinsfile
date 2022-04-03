@@ -1,6 +1,11 @@
 pipeline {
 
-    agent any
+    agent {
+        dockerfile {
+            filename 'Dockerfile'
+            args '-e PATH=/src/cpp-exercises/build:$PATH'
+        }
+    }
 
     stages {
         stage('Build') {
