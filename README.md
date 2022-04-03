@@ -118,6 +118,12 @@ exit
 
 Open `http://localhost:8000`, enter the authentication password and finish the setup.
 
+### Create Pipeline
+
+After the Jenkins server setup is done, you need to create a Jenkins pipeline.
+
+Select `Pipeline script from SCM`, so Jenkins will use the [Jenkinsfile](https://github.com/cfanatic/cpp-exercises/blob/master/Jenkinsfile) provided in this repository.
+
 ### Activate Webhook
 
 Jenkins shall trigger a pipeline run, whenever a new commit is pushed to the repository.
