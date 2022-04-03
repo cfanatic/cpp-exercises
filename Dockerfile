@@ -8,7 +8,8 @@ RUN apt-get -y install \
     cmake \
     protobuf-compiler \
     gcc \
-    g++
+    g++ \
+    cppcheck
 
 RUN git clone https://github.com/cfanatic/cpp-exercises.git /src/cpp-exercises
 RUN mkdir /src/cpp-exercises/build

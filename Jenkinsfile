@@ -29,7 +29,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh './build/cpp-exercises-test --gtest_output=xml:results.xml'
+                sh './build/cpp-exercises-test --gtest_output=xml:gtest-results.xml'
+                sh 'cppcheck . --enable=all --language=c++ --std=c++14 -I include/ -ibuild/ --suppress=\'*:build/*\' --xml 2> cppcheck-result.xml'
             }
         }
         stage('Deploy') {
@@ -43,8 +44,9 @@ pipeline {
         success {
             xunit (
                 thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
-                tools: [ GoogleTest(pattern: 'results.xml') ]
+                tools: [ GoogleTest(pattern: 'gtest-results.xml') ]
             )
+            publishCppcheck ignoreBlankFiles: true, pattern: '**/cppcheck-result.xml'
         }
     }
 
