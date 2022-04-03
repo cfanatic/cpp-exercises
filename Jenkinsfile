@@ -7,6 +7,10 @@ pipeline {
         }
     }
 
+    options {
+        timeout(time: 1, unit: 'HOURS')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -36,7 +40,7 @@ pipeline {
     }
 
     post {
-        always {
+        success {
             xunit (
                 thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
                 tools: [ GoogleTest(pattern: 'results.xml') ]
