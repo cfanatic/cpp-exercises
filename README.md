@@ -118,6 +118,24 @@ exit
 
 Open `http://localhost:8000`, enter the authentication password and finish the setup.
 
+### Activate Webhook
+
+Jenkins shall trigger a pipeline run, whenever a new commit is pushed to the repository.
+
+Use `ngrok` to expose the Jenkins server to the Internet:
+
+```text
+ngrok http 8000
+```
+
+Take note of the resulting address, and add a webhook with a push-event in the settings section of your repository:
+
+```text
+https://<subdomain>.ngrok.io/github-webhook/
+```
+
+Activate the checkbox for `GitHub hook trigger for GITScm polling` in the configuration section of your Jenkins pipeline.
+
 ### Known Issues
 
 The Jenkins plugin [cppcheck 1.25](https://plugins.jenkins.io/cppcheck) is incompatible with JDK11.
