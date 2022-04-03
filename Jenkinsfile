@@ -47,7 +47,7 @@ pipeline {
                 thresholds: [ skipped(failureThreshold: '0'), failed(failureThreshold: '0') ],
                 tools: [ GoogleTest(pattern: 'gtest-results.xml') ]
             )
-            publishCppcheck ignoreBlankFiles: true, pattern: '**/cppcheck-result.xml'
+            publishCppcheck ignoreBlankFiles: true, pattern: '**/cppcheck-result.xml', threshold: '5', failureThreshold: '10'
         }
     }
 
