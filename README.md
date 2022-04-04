@@ -2,7 +2,11 @@
 
 In this repository I host some implementations of C++ exercises.
 
-Each file in `/src` corresponds to an exercise. A task description is given in each file. There are unit tests in `/test` which verify a correct implementation. They are based on [GoogleTest](<https://github.com/google/googletest>).
+Each file in `/src` corresponds to an exercise.
+A task description is given in each file.
+There are unit tests in `/test` which verify a correct implementation.
+They are based on [GoogleTest](<https://github.com/google/googletest>).
+The testing process is automated in CI fashion by Jenkins.
 
 ## Requirements
 
@@ -48,7 +52,6 @@ docker run --rm cpp-exercises cpp-exercises-test
 ## Continuous Testing
 
 The following instructions explain how to set up a containerized Jenkins environment.
-Whenever a new commit is pushed, a new pipeline run shall be triggered to automate the testing process.
 
 Create a bridge network for Docker containers:
 
@@ -88,7 +91,7 @@ Retrieve the password to authenticate with the Jenkins server in the last step:
 docker logs jenkins-server
 ```
 
-Start a shell inside the Jenkins server container:
+Start a shell inside the Jenkins server:
 
 ```text
 docker exec -it -u root jenkins-server bash
@@ -120,15 +123,15 @@ Open `http://localhost:8000`, enter the authentication password and finish the s
 
 ### Create Pipeline
 
-After the Jenkins server setup is done, you need to create a Jenkins pipeline.
+After the setup for the Jenkins server is done, you need to create a Jenkins pipeline.
 
-Select `Pipeline script from SCM`, so Jenkins will use the [Jenkinsfile](https://github.com/cfanatic/cpp-exercises/blob/master/Jenkinsfile) provided in this repository.
+Select `Pipeline script from SCM` in the options, so Jenkins will use the [Jenkinsfile](https://github.com/cfanatic/cpp-exercises/blob/master/Jenkinsfile) provided in this repository.
 
 ### Activate Webhook
 
 Jenkins shall trigger a pipeline run, whenever a new commit is pushed to the repository.
 
-Use `ngrok` to expose the Jenkins server to the Internet:
+Use `ngrok` on your host to expose the Jenkins server to the Internet:
 
 ```text
 ngrok http 8000
@@ -140,7 +143,7 @@ Take note of the resulting address, and add a webhook with a push-event in the s
 https://<subdomain>.ngrok.io/github-webhook/
 ```
 
-Activate the checkbox for `GitHub hook trigger for GITScm polling` in the configuration section of your Jenkins pipeline.
+Activate the checkbox for `GitHub hook trigger for GITScm polling` in the options of your Jenkins pipeline.
 
 ### Known Issues
 
@@ -150,9 +153,9 @@ When you perform a pipeline run, you may encounter following error in the *Conso
 > [Cppcheck] Parsing throws exceptions. javax.xml.bind.JAXBException:
 Implementation of JAXB-API has not been found on module path or classpath.
 
-You can resolve this issue by considering the [pull request #56](https://github.com/jenkinsci/cppcheck-plugin/pull/56).
+You can resolve this issue by implementing the [pull request #56](https://github.com/jenkinsci/cppcheck-plugin/pull/56).
 
-Follow these steps to build the plugin including patch yourself:
+Follow these steps to build the plugin including patch:
 
 ```text
 git clone -b jdk11 https://github.com/xnYi9wRezm/cppcheck-plugin.git
