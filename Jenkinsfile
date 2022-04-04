@@ -1,5 +1,8 @@
 pipeline {
 
+    // Please note:
+    // The build stage is not strictly required since the code is built in the Docker image
+
     agent {
         dockerfile {
             filename 'Dockerfile'

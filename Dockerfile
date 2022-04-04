@@ -11,8 +11,8 @@ RUN apt-get -y install \
     g++ \
     cppcheck
 
-RUN git clone https://github.com/cfanatic/cpp-exercises.git /src/cpp-exercises
-RUN mkdir /src/cpp-exercises/build
+COPY . /src/cpp-exercises
+RUN mkdir -p /src/cpp-exercises/build
 WORKDIR /src/cpp-exercises/build
 RUN cmake ..
 RUN make
