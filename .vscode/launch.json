@@ -7,8 +7,16 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Debug",
+            "name": "Debug: cpp-exercises-test",
             "program": "${workspaceFolder}/build/cpp-exercises-test",
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug: cpp-exercises-debug",
+            "program": "${workspaceFolder}/build/cpp-exercises-debug",
             "args": [],
             "cwd": "${workspaceFolder}"
         }
